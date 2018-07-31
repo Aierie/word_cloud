@@ -9,7 +9,7 @@ def query_integral_image(unsigned int[:, :] integral_image, int size_x, int size
     cdef int hits = c_search_for_space(integral_image, size_x, size_y)
     if not hits:
         return None
-    cdef int goal = random_state.randrange(0, hits + 1)
+    cdef int goal = random_state.randrange(1, hits + 1)
     cdef int coordinates_array[2]
     cdef int[:] coordinates_memory_view = coordinates_array
     c_iterate_for_coordinates(integral_image, size_x, size_y, goal, coordinates_memory_view)
